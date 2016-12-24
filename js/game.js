@@ -87,7 +87,6 @@ function startGame() {
   ctx.font = '14px Helvetica'
 
   keystate = {};
-  num_fruits =5;
 
   document.addEventListener("keydown", function(e) {
     keystate[e.keyCode] = true;
@@ -104,15 +103,20 @@ function startGame() {
     pause();
   });
 
-  init();
-  loop();
 }
 
 function start() {
-  frames = 0;
+  unpause();
   // init game info
+  num_fruits = document.getElementById('num_fruit').value;
   ghost_speed = 60 - document.getElementById('ghost_speed').value;
   player_speed = 60 - document.getElementById('player_speed').value;
+
+    init();
+    loop();
+}
+function unpause() {
+  frames = 0;
 }
 
 function pause() {
@@ -129,7 +133,7 @@ function init() {
 
   var ghostPos = { x: getRandomInt(0, COLS-1), y: getRandomInt(0, COLS-1) }
 
-  player.init(playerPos.x, playerPos.y);
+  player.init(RIGHT,playerPos.x, playerPos.y);
   ghost.init(DOWN, ghostPos.x, ghostPos.y);
 
   // grid.set(GHOST, ghostPos.x, ghostPos.y);
@@ -155,9 +159,12 @@ function update() {
   if (keystate[KEY_UP]) player.direction = UP;
   if (keystate[KEY_RIGHT]) player.direction = RIGHT;
   if (keystate[KEY_DOWN]) player.direction = DOWN;
+
+  // TODO: fix to press enter is start game
   if (keystate[KEY_ENTER]) {
-    if (frames == undefined)
-    start();
+    if (frames == undefined || score == num_fruits)
+    // start();
+    unpause();
   }
 
   if (frames % ghost_speed === 0) {
@@ -174,7 +181,7 @@ function update() {
       init();
     }
 
-    if (score == 5) {
+    if (score == num_fruits) {
       window.setTimeout(function() {
         console.log('log');
         window.alert('You win!');

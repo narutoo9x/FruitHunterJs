@@ -1,8 +1,9 @@
 function Player() {
   this.direction = null;
 
-  this.init =  function(x, y) {
+  this.init =  function(direction, x, y) {
 
+    this.direction = direction;
     console.log('init player');
 
     this.posX = x;
