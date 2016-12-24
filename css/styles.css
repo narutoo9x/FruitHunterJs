@@ -1,0 +1,42 @@
+canvas {
+  display: block;
+  position: absolute;
+  border: 1px solid #f00;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  float: left;
+}
+
+.btn {
+  width: 100px;
+  height:30px;
+  margin: 0 auto;
+  font-size: 14px;
+  border: 0px;
+  border-radius: 10px;
+  left: 0;
+  right: 0;
+  display: block;
+  position: absolute;
+  float: left;
+}
+
+.btn-info {
+  bottom: 20px;
+  background-color: #30A9DE;
+}
+
+.btn-warning {
+  bottom: 60px;
+  background-color: #EFDC05;
+}
+
+input[type=text] {
+  height: 30px;
+  width: 30%;
+  border: 2px solid red;
+  border-radius: 4px;
+}
