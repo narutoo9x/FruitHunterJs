@@ -83,6 +83,11 @@ function startGame() {
   canvas.width = COLS*20;
   canvas.height = ROWS*20;
   ctx = canvas.getContext("2d");
+
+  ctx.font = '40px Helvetica'
+  ctx.fillStyle = '#f00';
+  ctx.fillText('Fruit Hunter', canvas.width/2 - 100, canvas.height/2);
+
   document.getElementById('screen').appendChild(canvas);
   ctx.font = '14px Helvetica'
 
@@ -106,18 +111,19 @@ function startGame() {
 }
 
 function start() {
-  unpause();
+  frames = 0;
   // init game info
   num_fruits = document.getElementById('num_fruit').value;
   ghost_speed = 60 - document.getElementById('ghost_speed').value;
   player_speed = 60 - document.getElementById('player_speed').value;
-
-    init();
-    loop();
+  
+  init();
+  loop();
 }
-function unpause() {
-  frames = 0;
-}
+// function unpause() {
+//   if (frames == 'undefined')
+//     frames = 0;
+// }
 
 function pause() {
   frames = 'undefined';
@@ -162,9 +168,9 @@ function update() {
 
   // TODO: fix to press enter is start game
   if (keystate[KEY_ENTER]) {
-    if (frames == undefined || score == num_fruits)
+    // if (frames == undefined || score == num_fruits)
     // start();
-    unpause();
+    // unpause();
   }
 
   if (frames % ghost_speed === 0) {
