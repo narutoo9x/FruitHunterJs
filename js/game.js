@@ -1,7 +1,7 @@
 // Setup canvas
 var COLS=20, ROWS=20;
 
-//objects
+// objects
 var EMPTY=0, PLAYER=1, FRUIT=2, GHOST=3;
 
 // direction
